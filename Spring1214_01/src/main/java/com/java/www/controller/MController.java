@@ -20,25 +20,19 @@ public class MController {
 	}
 	@RequestMapping("memberUpdate")
 	public String memberUpdate(MemberDto mdto,Model model) {
-		String id = mdto.getId();
-		String pw = mdto.getPw();
-		String name = mdto.getName();
-		String phone = mdto.getPhone();
-		String gender = mdto.getGender();
-		String hobby = mdto.getHobby();
 		
 		model.addAttribute("mdto", mdto);
 		return "member/memberUpdate";
 	}
+	@RequestMapping("memberView")
+	public String memberView(MemberDto mdto,Model model) {
+		
+		model.addAttribute("mdto", mdto);
+		return "member/memberView";
+	}
 	@RequestMapping("doMInsert")
 	public String doMInsert(MemberDto mdto,Model model) {
-		String id = mdto.getId();
-		String pw = mdto.getPw();
-		String name = mdto.getName();
-		String phone = mdto.getPhone();
-		String gender = mdto.getGender();
-		String hobby = mdto.getHobby();
-		
+		System.out.println("MController hobby :"+mdto.getHobby());
 		model.addAttribute("mdto", mdto);
 		return "member/memberView";
 	}

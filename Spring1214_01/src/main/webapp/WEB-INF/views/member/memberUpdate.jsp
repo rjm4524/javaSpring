@@ -24,12 +24,6 @@
 		<script>
 		   $(function(){
 			  $("#fbtn").click(function(){
-				 if($("#id").val().length<2){
-					 alert("아이디를 입력하셔야 합니다.");
-					 $("#id").focus();
-					 return false;
-				 }
-				  
 				 alert("회원정보를 저장합니다.");  
 				 m_frm.submit();
 			  });
@@ -38,8 +32,8 @@
 	</head>
 	<body>
 	  <div>
-	   <h1>회원정보 수정</h1>
-	   <form name="m_frm" method="post" action="../notice/noticeList">
+	   <h1>회원정보수정</h1>
+	   <form name="m_frm" method="post" action="memberView">
 		   <table>
 		     <tr>
 		       <th>아이디</th>
