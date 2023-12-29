@@ -275,7 +275,7 @@
 									<c:if test="${map.prevdto!=null}">
 										<tr>
 											<th class="pre">PREV</th>
-											<td><a href="#">${map.prevdto.btitle}</a></td>
+											<td><a href="notice_view?bno=${map.bdto.bno-1}">${map.prevdto.btitle}</a></td>
 										</tr>
 									</c:if>
 									<c:if test="${map.prevdto==null}">
@@ -286,13 +286,13 @@
 									</c:if>
 									<c:if test="${map.nextdto!=null}">
 										<tr>
-											<th class="pre">PREV</th>
-											<td><a href="#">${map.nextdto.btitle}</a></td>
+											<th class="pre">NEXT</th>
+											<td><a href="notice_view?bno=${map.bdto.bno+1}">${map.nextdto.btitle}</a></td>
 										</tr>
 									</c:if>
 									<c:if test="${map.nextdto==null}">
 										<tr>
-											<th class="pre">PREV</th>
+											<th class="pre">NEXT</th>
 											<td><a href="#">다음글이 없습니다.</a></td>
 										</tr>
 									</c:if>
@@ -336,9 +336,9 @@
 							<div class="btnArea btline">
 								<div class="bRight">
 									<ul>
-										<li><a href="#" class="nbtnbig mw">수정</a></li>
-										<li><a href="#" class="nbtnbig mw">삭제</a></li>
-										<li><a href="#" class="nbtnbig mw">답글달기</a></li>
+										<li><a href="notice_update" class="nbtnbig mw">수정</a></li>
+										<li><a href="notice_delect" class="nbtnbig mw">삭제</a></li>
+										<li><a href="notice_insert" class="nbtnbig mw">답글달기</a></li>
 										<li><a href="notice" class="sbtnMini mw">목록</a></li>
 									</ul>
 								</div>

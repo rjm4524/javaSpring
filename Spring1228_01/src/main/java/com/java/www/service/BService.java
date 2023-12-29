@@ -11,4 +11,6 @@ public interface BService {
 
 	Map<String, Object> selectOne(int bno);
 
+	void write(BoardDto bdto);
+
 }

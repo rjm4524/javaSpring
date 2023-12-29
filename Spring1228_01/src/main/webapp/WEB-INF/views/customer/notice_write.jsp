@@ -243,6 +243,15 @@
 							</h2>
 
 							<div class="checkDivTab">
+							<script>
+								$(function(){
+									$(".sbtnMini").click(function(){
+										alert("게시글을 작성합니다.");
+										notice_Frm.submit();
+									});
+								});
+							</script>
+							<form name="notice_Frm" action="notice_write" method="post" enctype="multipart/form-data">
 								<table
 									summary="게시글 작성" class="checkTable" border="1" cellspacing="0">
 									<caption>게시글 작성</caption>
@@ -269,14 +278,15 @@
 										</tr>
 									</tbody>
 								</table>
+							</form>
 							</div>
 
 							<!-- Btn Area -->
 							<div class="btnArea">
 								<div class="bCenter">
 									<ul>
-										<li><a href="#" class="nbtnbig">취소</a></li>
-										<li><a href="#" class="sbtnMini">확인</a></li>
+										<li><a href="notice_view" class="nbtnbig">취소</a></li>
+										<li><a class="sbtnMini">확인</a></li>
 									</ul>
 								</div>
 							</div>

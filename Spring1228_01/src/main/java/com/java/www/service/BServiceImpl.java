@@ -36,4 +36,10 @@ BoardMapper boardMapper;
 		return map;
 	}
 
+	@Override
+	public void write(BoardDto bdto) {
+		boardMapper.write(bdto);
+		
+	}
+
 }

@@ -19,5 +19,7 @@ public interface BoardMapper {
 	//다음글 보기
 	BoardDto selectNext(int bno);
 
+	void write(BoardDto bdto);
+
 
 }

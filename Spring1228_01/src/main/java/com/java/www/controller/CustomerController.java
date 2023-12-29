@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -31,6 +32,14 @@ BService bService;
 	public String notice_write() {
 		return "customer/notice_write";
 	}
+	
+	@PostMapping("notice_write")
+	public String write(BoardDto bdto,Model model) {
+		bService.write(bdto);
+		
+		return "notice_view";
+	}
+	
 	@GetMapping("notice_view")
 	public String notice_view(@RequestParam(defaultValue = "1") int bno, Model model) {
 		Map<String, Object> map = bService.selectOne(bno);
