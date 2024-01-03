@@ -1,3 +1,8 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,7 +15,7 @@
 <link rel="stylesheet" type="text/css" href="../css/reset.css?v=Y" />
 <link rel="stylesheet" type="text/css" href="../css/layout.css?v=Y" />
 <link rel="stylesheet" type="text/css" href="../css/content.css?v=Y" />
-<script type="text/javascript" src="../js/jquery.min.js"></script>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script type="text/javascript" src="../js/top_navi.js"></script>
 <script type="text/javascript" src="../js/left_navi.js"></script>
 <script type="text/javascript" src="../js/main.js"></script>
@@ -245,10 +250,66 @@ $(document).ready(function() {
 						</ul>
 					</div>
 
+                    <script>
+                      $(function(){
+                    	  $(".nbtnMini2").click(function(){
+                    		  alert("이메일을 발송합니다.");
+                    		  let email = $("#email").val();
+                    		  alert(email);
+                    		  
+                    		  //ajax전송
+                    		  $.ajax({
+                    			  url:"/member/email",
+                    			  type:"post",
+                    			  data:{"email":email},
+                    			  dataType:"text",
+                    			  success:function(data){
+                    				  alert("성공");
+                    				  console.log("이메일인증코드 : "+data);
+                    				  
+                    				  $(function(){
+              							$("#pwcheckBtn").click(function(){
+              								alert("비밀번호 인증을 진행합니다.")
+              								alert(data);
+              								if($("#pwKey").val()==data) {
+              									alert("비밀번호 인증 성공");
+              									location.href="/member/step02"
+              								}else {
+              									alert("인증번호가 틀립니다. 인증번호를 다시 받아주세요.")
+              									return false;
+              								}
+              							});
+              						});
+                    			  },
+                    			  error:function(){
+                    				  alert("실패");
+                    			  }            			  
+                    			  
+                    		  });//ajax
+                    		  
+                    	  });
+                      });//jquery
+                    </script>
 
 					<!-- Btn Area -->
-					<div class="btnAreaCenter">
-						<a href="#" class="gbtn">휴대폰인증</a></li>
+					<div class="btnArea">
+					<script>
+						$(function(){
+							$("#pwcheckBtn").click(function(){
+								alert("비밀번호 인증을 진행합니다.")
+								if($("#pwKey")==data)
+							});
+						});
+					</script>
+						<div class="bCenter2">
+							<ul>
+								<li class="r10"><input type="text" id="email" class="w200" /></li>
+								<li><a class="nbtnMini2" style="cursor: pointer;">이메일발송</a></li>
+								<li class="w201"></li>
+								<li class="r10"><input type="text" id="pwKey" class="w200" /></li>
+								<li><a id="pwcheckBtn" class="sbtnMini2">비밀번호인증</a></li>
+							</ul>
+						</div>
 					</div>
 					<!-- //Btn Area -->
 

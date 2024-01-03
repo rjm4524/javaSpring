@@ -9,7 +9,7 @@ import com.java.www.dto.BoardDto;
 public interface BService {
 
 	//공지사항 전체가져오기
-	Map<String, Object> selectAll(int page, String category, String sWord);
+	List<BoardDto> selectAll();
 
 	//게시글 1개 가져오기
 	Map<String, Object> selectOne(int bno);
@@ -22,8 +22,6 @@ public interface BService {
 
 	//댓글수정저장
 	BCommentDto BCommentUpdate(BCommentDto cdto);
-	//게시글 검색
-	Map<String, Object> selectSearch(int page, String category, String sWord);
 
 	
 

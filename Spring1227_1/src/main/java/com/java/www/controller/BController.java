@@ -1,8 +1,10 @@
 package com.java.www.controller;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.properties.bind.DefaultValue;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.java.www.dto.BCommentDto;
+import com.java.www.dto.BoardDto;
 import com.java.www.service.BService;
 
 import jakarta.servlet.http.HttpSession;
@@ -24,29 +27,14 @@ public class BController {
 	@Autowired HttpSession session;
 	
 	@GetMapping("notice")
-	public String notice(@RequestParam(defaultValue = "1") int page,@RequestParam(required = false) String category,
-			@RequestParam(required = false) String sWord, Model model) {
+	public String notice(Model model) {
 		//page 가지고 와야 함.
 		//service연결 - list
-		Map<String, Object> map = bService.selectAll(page,category,sWord);
+		List<BoardDto> list = bService.selectAll();
 		//model전송
-		System.out.println("search"+sWord);
-		model.addAttribute("map",map);
+		model.addAttribute("list",list);
 		return "customer/notice";
 	}
-	
-	
-	@GetMapping("search") 
-	public String search(@RequestParam(defaultValue = "1") int page,@RequestParam(required = false) String category,
-			@RequestParam(required = false) String sWord, Model model) {
-		
-		Map<String, Object> map = bService.selectSearch(page,category,sWord);
-		model.addAttribute("map",map);
-		
-		return "customer/notice";
-	}
-	
-	
 	
 	@GetMapping("notice_view") //1개 게시글 가져오기
 	public String notice_view(@RequestParam(defaultValue = "1") int bno,Model model) {

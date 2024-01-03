@@ -1,7 +1,6 @@
 package com.java.www.controller;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
@@ -43,7 +42,51 @@ public class FController {
 		return list;
 	}
 	
+	//------------------------------------------------
+	//------ 자전거정보 : 공공자전거 실시간 대여정보  --------
+	//------------------------------------------------
+	@GetMapping("layout/bikeData")
+	public String bikeData() {
+		return "layout/bikeData";
+	}
+	
+	@GetMapping("layout/searchBike")
+	@ResponseBody
+	public String searchBike(String txt) throws Exception {
+		System.out.println("searchData txt : "+txt);
+		String key ="586c6567586f6e7531313354476a4d46";
+		String bikeUrl = "http://openapi.seoul.go.kr:8088/"
+				+ key +"/json/bikeList/1/10/";
+		
+		URL url = new URL(bikeUrl);
+		HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+        conn.setRequestMethod("GET");
+        conn.setRequestProperty("Content-type", "application/json");
+        System.out.println("Response code: " + conn.getResponseCode());
+        BufferedReader rd;
+        if(conn.getResponseCode() >= 200 && conn.getResponseCode() <= 300) {
+            rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+        } else {
+            rd = new BufferedReader(new InputStreamReader(conn.getErrorStream()));
+        }
+        StringBuilder sb = new StringBuilder();  //String 을 계속 더하면 String변수를 계속 새롭게 만듬.
+        String line;
+        while ((line = rd.readLine()) != null) {
+            sb.append(line); //json데이터를 sb에 1줄씩 저장
+        }
+        rd.close();
+        conn.disconnect();
+        System.out.println(sb.toString());
+		
+		return sb.toString();
+	}//
+	
+	
+	
+	
+	//-------------------------------------
 	//------ 영화정보 : 일별 박스오피스 --------
+	//-------------------------------------
 	@GetMapping("layout/screenData")
 	public String screenData() {
 		return "layout/screenData";
@@ -53,7 +96,7 @@ public class FController {
 	@ResponseBody //데이터 전송
 	public String searchScreen(String txt) throws Exception {
 		System.out.println("searchData txt : "+txt);
-		String key = "0ff26cf12f5612e2b9eac8827e1f99c0";
+		String key ="b4cefdc91025f56609b0e03df7a460a0";
 		StringBuilder urlBuilder = new StringBuilder("http://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json"); /*URL*/
         urlBuilder.append("?" + URLEncoder.encode("key","UTF-8") + "="+key); /*Service Key*/
         urlBuilder.append("&" + URLEncoder.encode("targetDt","UTF-8") + "=" + URLEncoder.encode("20231228", "UTF-8")); /*응답메세지 형식 : REST방식의 URL호출 시 json값 추가(디폴트 응답메세지 형식은XML)*/
@@ -81,12 +124,9 @@ public class FController {
 		return sb.toString();
 	}
 	
-	
-	
-	
-	
+	//------------------------------------------------------
 	//------ 공공데이터 사진정보 : 사진목록조회, 사진검색조회 --------
-	
+	//------------------------------------------------------
 	@GetMapping("layout/publicData")
 	public String publicData() {
 		return "layout/publicData";
@@ -178,43 +218,6 @@ public class FController {
 		
 		return sb.toString();
 	}//galleryList
-	//-------------자전거 정보
-	@GetMapping("layout/bikeData")
-	public String bikeData() {
-		return "layout/bikeData";
-	}
-	
-	
-	@GetMapping("layout/searchBike")
-	@ResponseBody
-	public String searchBike(String txt) throws IOException {
-		System.out.println("searchData txt : "+txt);
-		String key = "6a79657a63726a6d37335673536876";
-		String url = "http://openapi.seoul.go.kr:8088/"+key+"/json/bikeList/1/20/";
-        URL bikeurl = new URL(url.toString());
-        //URL url = new URL("https://apis.data.go.kr/B551011/PhotoGalleryService1/galleryList1?serviceKey=918RE13GA7OY7ZEmUzApgbOeAcQoZ%2FaHsXWcqPAKQ9YNNPj83KOstRMRIUrCFIAcm9qj2R6b7NFZjp%2FYsYzJLg%3D%3D&numOfRows=10&pageNo=2&MobileOS=ETC&MobileApp=AppTest&arrange=A&_type=json");
-        HttpURLConnection conn = (HttpURLConnection) bikeurl.openConnection();
-        conn.setRequestMethod("GET");
-        conn.setRequestProperty("Content-type", "application/json");
-        System.out.println("Response code: " + conn.getResponseCode());
-        BufferedReader rd;
-        if(conn.getResponseCode() >= 200 && conn.getResponseCode() <= 300) {
-            rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-        } else {
-            rd = new BufferedReader(new InputStreamReader(conn.getErrorStream()));
-        }
-        StringBuilder sb = new StringBuilder();  //String 을 계속 더하면 String변수를 계속 새롭게 만듬.
-        String line;
-        while ((line = rd.readLine()) != null) {
-            sb.append(line); //json데이터를 sb에 1줄씩 저장
-        }
-        rd.close();
-        conn.disconnect();
-        System.out.println(sb.toString());
-		
-		return sb.toString();
-	}
-	
 	
 	///----------------------------------------------------------
 	

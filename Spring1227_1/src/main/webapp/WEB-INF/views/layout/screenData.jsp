@@ -29,21 +29,22 @@
 					  success:function(data){
 						  alert("성공");
 						  console.log("전체데이터 : "+data);
+						  
+						  //-----
 						  let iarr = data.boxOfficeResult.dailyBoxOfficeList;
 						  //console.log("iarr[0].galTitle 데이터 : "+iarr[0].galTitle);
 						  let hdata="";
 						  for(let i=0;i<iarr.length;i++){
-						  hdata += '<tr>';
-						  hdata += '<td>'+ iarr[i].rank +'</td>';
-						  hdata += '<td>'+ iarr[i].rankInten +'</td>';
-						  hdata += '<td>'+ iarr[i].movieNm +'</td>';
-						  hdata += '<td>'+ iarr[i].openDt +'</td>';
-						  hdata += '<td>'+ Number(iarr[i].salesAcc).toLocaleString('ko-KR')+'</td>';
-						  hdata += '<td>'+ Number(iarr[i].audiAcc).toLocaleString('ko-KR')+'</td>';
-						  hdata += '<td>영화포스터</td>';
-						  hdata += '</tr>';
+							  hdata += '<tr>';
+							  hdata += '<td>'+ iarr[i].rank +'</td>';
+							  hdata += '<td>'+ iarr[i].rankInten +'</td>';
+							  hdata += '<td>'+ iarr[i].movieNm +'</td>';
+							  hdata += '<td>'+ iarr[i].openDt +'</td>';
+							  hdata += '<td>'+ Number(iarr[i].salesAcc).toLocaleString('ko-KR'); +'</td>';
+							  hdata += '<td>'+ Number(iarr[i].audiAcc).toLocaleString('ko-KR'); +'</td>';
+							  hdata += '<td>영화포스터</td>';
+							  hdata += '</tr>';
 						  }
-						 	
 						  $("#content").html(hdata);
 						  
 					  },
@@ -52,9 +53,6 @@
 					  }
 					  
 				  });
-				  
-				  
-				  
 				  
 			   });
 		   });

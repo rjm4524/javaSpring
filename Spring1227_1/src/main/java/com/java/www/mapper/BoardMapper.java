@@ -1,6 +1,5 @@
 package com.java.www.mapper;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
@@ -12,9 +11,7 @@ import com.java.www.dto.BoardDto;
 public interface BoardMapper {
 
 	//공지사항 전체가져오기
-	ArrayList<BoardDto> selectAll(int startRow, int endRow, String category,String sWord);
-	//게시글 검색
-	int selectCountAll(String category, String sWord);
+	List<BoardDto> selectAll();
 
 	//게시글 1개 가져오기
 	BoardDto selectOne(int bno);
@@ -33,12 +30,6 @@ public interface BoardMapper {
 
 	//댓글 수정저장
 	void BCommentUpdate(BCommentDto cdto);
-	
-	//검색된 게시글 갯수
-	int selectSearchCountAll(String category, String sWord);
-	//검색된 게시글 보기
-	ArrayList<BoardDto> selectSearch(int startRow, int endRow, String category, String sWord);
-
 
 
 }

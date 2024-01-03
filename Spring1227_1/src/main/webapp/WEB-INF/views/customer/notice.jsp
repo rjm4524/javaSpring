@@ -237,7 +237,7 @@ $(document).ready(function() {
 								<th scope="col" class="tnone">조회수</th>
 							</thead>
 							<tbody>
-							    <c:forEach var="bdto" items="${map.list}">
+							    <c:forEach var="bdto" items="${list}">
 								<tr>
 									<td class="tnone">${bdto.bno}</td>
 									<td class="left">
@@ -267,29 +267,14 @@ $(document).ready(function() {
 						
 						<!-- 페이징이동1 -->
 						<div class="allPageMoving1">
-						
-						<a href="notice?page=${1}&category=${map.category}&sWord=${map.sWord}" class="n"><img src="../images/btn/btn_pre2.gif" alt="처음으로"/></a>
-						<c:if test="${map.page>1}">
-						<a href="notice?page=${map.page-1}&category=${map.category}&sWord=${map.sWord}" class="pre"><img src="../images/btn/btn_pre1.gif" alt="앞페이지로"/></a>
-						</c:if>
-						<c:if test="${map.page<=1}">
-						<a class="pre"><img src="../images/btn/btn_pre1.gif" alt="앞페이지로"/></a>
-						</c:if>
-						<c:forEach var="i" begin="${map.startPage}" end="${map.endPage}">
-						<c:if test="${map.page==i}">
-						<strong>${i}</strong>
-						</c:if>
-						<c:if test="${map.page!=i}">
-						<a href="notice?page=${i}&category=${map.category}&sWord=${map.sWord}"><strong>${i}</strong></a>
-						</c:if>
-						</c:forEach>
-						<c:if test="${map.page<map.maxPage}">
-						<a href="notice?page=${map.page+1}&category=${map.category}&sWord=${map.sWord}" class="next"><img src="../images/btn/btn_next1.gif" alt="뒤페이지로"/></a>
-						</c:if>
-						<c:if test="${map.page>=map.maxPage}">
-						<a class="next"><img src="../images/btn/btn_next1.gif" alt="뒤페이지로"/></a>
-						</c:if>
-						<a href="notice?page=${map.maxPage}&category=${map.category}&sWord=${map.sWord}" class="n"><img src="../images/btn/btn_next2.gif" alt="마지막페이지로"/></a>
+
+						<a href="#" class="n"><img src="../images/btn/btn_pre2.gif" alt="처음으로"/></a><a href="#" class="pre"><img src="../images/btn/btn_pre1.gif" alt="앞페이지로"/></a>
+						<strong>1</strong>
+						<a href="#">2</a>
+						<a href="#">3</a>
+						<a href="#">4</a>
+						<a href="#">5</a>
+						<a href="#" class="next"><img src="../images/btn/btn_next1.gif" alt="뒤페이지로"/></a><a href="#" class="n"><img src="../images/btn/btn_next2.gif" alt="마지막페이지로"/></a>
 
 						</div>
 						<!-- //페이징이동1 -->
@@ -300,17 +285,13 @@ $(document).ready(function() {
 							<ul>
 								<li class="web"><img src="../images/txt/txt_search.gif" alt="search" /></li>
 								<li class="se">
-								<form action="notice" name="search" method="get">
-									<select name="category" id="category">
-										<option value="all"/>전체</option>
-										<option value="btitle"/>제목</option>
-										<option value="bcontent"/>내용</option>
+									<select>
+										<option value="" />제목</option>
 									</select>
 								</li>
-								<li><input type="text" class="searchInput" id="sWord" name="sWord"/></li>
-								<button type="submit"><li class="web"><img src="../images/btn/btn_search.gif" alt="검색" /></a></li></button>
+								<li><input type="text" class="searchInput" /></li>
+								<li class="web"><a href="#"><img src="../images/btn/btn_search.gif" alt="검색" /></a></li>
 								<li class="mobile"><a href="#"><img src="../images/btn/btn_search_m.gif" alt="검색" /></a></li>
-								</form>
 							</ul>
 						</div>
 					</div>

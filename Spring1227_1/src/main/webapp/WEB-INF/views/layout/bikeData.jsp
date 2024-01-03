@@ -28,23 +28,20 @@
 					  dataType:"json",
 					  success:function(data){
 						  alert("성공");
-						  console.log("전체데이터 : "+data);
+						  console.log(data);
 						  let iarr = data.rentBikeStatus.row;
-						  //console.log("iarr[0].galTitle 데이터 : "+iarr[0].galTitle);
 						  let hdata="";
 						  for(let i=0;i<iarr.length;i++){
-						  hdata += '<tr>';
-						  hdata += '<td>'+ iarr[i].stationName +'</td>';
-						  hdata += '<td>'+ iarr[i].rackTotCnt +'</td>';
-						  hdata += '<td>'+ iarr[i].parkingBikeTotCnt +'</td>';
-						  hdata += '<td>'+ iarr[i].shared +'</td>';
-						  hdata += '<td>'+ iarr[i].stationLatitude +'</td>';
-						  hdata += '<td>'+ iarr[i].stationLongitude +'</td>';
-						  hdata += '</tr>';
+							  hdata += '<tr>';
+							  hdata += '<td>'+ iarr[i].rackTotCnt +'</td>';
+							  hdata += '<td>'+ iarr[i].stationName +'</td>';
+							  hdata += '<td>'+ iarr[i].parkingBikeTotCnt +'</td>';
+							  hdata += '<td>'+ iarr[i].shared +'% </td>';
+							  hdata += '<td>'+ iarr[i].stationLatitude +'</td>';
+							  hdata += '<td>'+ iarr[i].stationLongitude +'</td>';
+							  hdata += '</tr>';
 						  }
-						  
 						  $("#content").html(hdata);
-						  
 						  
 					  },
 					  error:function(){
@@ -53,16 +50,13 @@
 					  
 				  });
 				  
-				  
-				  
-				  
 			   });
 		   });
 		</script>
 	</head>
 	<body>
 	   <div id="main">
-		   <h1>따릉이데이터 정보</h1>
+		   <h1>자전거데이터 정보</h1>
 		   <input type="text" name="txt" id="txt">
 		   <button type="button" id="btn">검색</button>
 		   <br><br>
@@ -70,17 +64,17 @@
 		     <table>
 		       <colgroup>
 		         <col width="10%">
-		         <col width="30%">
+		         <col width="25%">
 		         <col width="10%">
-		         <col width="10%">
+		         <col width="15%">
 		         <col width="20%">
 		         <col width="20%">
 		       </colgroup>
 		       <thead>
 			       <tr>
-			         <th>대여소 이름</th>
-			         <th>거치대 갯수</th>
-			         <th>자전거주차 총건수</th>
+			         <th>거치대개수</th>
+			         <th>대여소이름</th>
+			         <th>자전거주차총건수</th>
 			         <th>거치율</th>
 			         <th>위도</th>
 			         <th>경도</th>
@@ -88,7 +82,6 @@
 		       </thead>
 		       <tbody id="content">
 			       <tr>
-			         <td></td>
 			         <td></td>
 			         <td></td>
 			         <td></td>

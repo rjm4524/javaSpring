@@ -4,11 +4,21 @@
 
 <!-- MemberMapper.java 연결 -->
 <mapper namespace="com.java.www.mapper.MemberMapper">
-  <select id="login" resultType="com.java.www.dto.MemberDto">
-     select * from member where id=#{id} and pw=#{pw}
+  <select id="login" resultType="com.java.www.dto.MemberDto2">
+     select * from member2 where id=#{id} and pw=#{pw}
   </select>
-  
-   
+  <select id="pwsearch" resultType="com.java.www.dto.MemberDto2">
+  	select * from member2 where id=#{id} and email=#{email}
+  </select>
+  <update id="update_pw">
+  	update member2 set pw=#{pwcode} where id=#{id}	
+  </update>
+  <select id="idsearch" resultType="com.java.www.dto.MemberDto2">
+  	select * from member2 where name=#{name} and email=#{email}
+  </select>
+  <select id="idcheck" resultType="com.java.www.dto.MemberDto2">
+  	select * from member2 where id = #{id}
+  </select>
    
    
 </mapper>
