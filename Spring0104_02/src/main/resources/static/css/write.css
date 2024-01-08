@@ -74,9 +74,8 @@ textarea {
 }
 
 .write {
-	cursor : pointer;	
   width: 130px;
-  height: 45px;
+  height: 45px;	
   font-size: 18px;
   color: white;
   background: #3d3d3d;
@@ -85,6 +84,9 @@ textarea {
 }
 
 .cancel {
+  width: 130px;
+  height: 45px;	
+  font-size: 18px;
   color: black;
   background: white;
   border: 2px solid #3d3d3d;

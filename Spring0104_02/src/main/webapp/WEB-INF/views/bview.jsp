@@ -3,54 +3,82 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>  
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>뷰페이지</title>
-  <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:400,500,700,900&display=swap&subset=korean" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/read.css">
-</head>
-<body>
-<section>
-    <h1>NOTICE</h1>
-
-    <table>
-    <form action="bupdate" name="bupdate" method="get" enctype="multipart-data">
-      <colgroup>
-        <col width="80%">
-        <col width="10%">
-        <col width="10%">
-        
-      </colgroup>
-      <tr>
-        <th colspan="3">글번호 : ${bdto.bno}</th>
-      </tr>
-      <tr>
-        <td colspan="3"><strong>${bdto.btitle}</strong></td>
-      </tr>
-      <tr>
-        <td>${bdto.id}</td>
-        <td>조회수</td>
-        <td>${bdto.bhit}</td>
-      </tr>
-      <tr>
-        <td colspan="3" class="article">${bdto.bcontent}</td>
-      </tr>
-      <tr>
-        <td colspan="3"><strong>다음글</strong> <span class="separator">|</span> [키즈잼] 2월 프로그램 안내</td>
-      </tr>
-      <tr>
-        <td colspan="3"><strong>이전글</strong> <span class="separator">|</span> [키즈잼] 2020년 1분기 정기 휴관일 안내</td>
-      </tr>
-    </form>
-    </table>
-
-    <a href="blist"><div class="list">목록</div></a>
-    <a href=""><div class="list">삭제</div></a>
-    <a href="bupdate?bno=${bdto.bno}"><div class="list">수정</div></a>
-    <a href=""><div class="list">답변달기</div></a>
-  </section>
-</body>
+	<head>
+		<meta charset="UTF-8">
+		<title>자유게시판 뷰페이지</title>
+		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+		<style>
+		  table,th,td{border:1px solid black; border-collapse: collapse;}
+		  h2{text-align: center;}
+		  table{width:920px; margin: 0 auto; text-align: center; }
+		  th,td{height:40px;}
+		  td{ text-align: left; padding-left:30px; }
+		  div{width: 500px; height:60px; margin:12px auto 0;  }
+		  button{display: inline-block; width:120px; height:40px; }
+		  #content{height:500px;}
+		  img{width:500px;}
+		</style>
+		<script>
+		   function deleteBtn(){
+			   if(confirm("게시글을 삭제하시겠습니까?")) location.href="doFboardDelete.do?bno=${bBean.bno}&page=${page}&searchTitle=${searchTitle}&searchWord=${searchWord}";
+		   }
+		   function updateBtn(){
+			   if(confirm("게시글을 수정하시겠습니까?")) location.href="fboardUpdate.do?bno=${bBean.bno}&page=${page}&searchTitle=${searchTitle}&searchWord=${searchWord}";
+		   }
+		</script>
+	</head>
+	<body>
+		<h2>자유게시판 뷰페이지</h2>
+		<table>
+		   <colgroup>
+		     <col width="30%">
+		     <col width="70%">
+		   </colgroup>
+			<tr>
+			  <th>제목</th>
+			  <td>${bdto.btitle}</td>
+			</tr>
+			<tr>
+			  <th>작성자</th>
+			  <td>${bdto.id}</td>
+			</tr>
+			<tr>
+			  <th>날짜</th>
+			  <td>${bdto.bdate}</td>
+			</tr>
+			<tr>
+			  <th>조회수</th>
+			  <td>${bdto.bhit}</td>
+			</tr>
+			<tr id="content">
+			  <th>내용</th>
+			  <td>${bdto.bcontent}</td>
+			</tr>
+			<tr>
+			  <th>파일명</th>
+			  <td>
+				  <c:if test="${bdto.bfile!=null}">
+				    <a href="./upload/${bdto.bfile}" download>${bdto.bfile}</a>
+				  </c:if>
+				  <c:if test="${bdto.bfile==null}">파일없음</c:if>
+			  </td>
+			</tr>
+			<tr>
+			  <th>첨부파일</th>
+			  <td>
+			      <c:if test="${bdto.bfile!=null}">
+				    <img src="./upload/${bdto.bfile}">
+				  </c:if>
+				  <c:if test="${bdto.bfile==null}">파일없음</c:if>
+			  </td>
+			</tr>
+		</table>
+		<div>
+		  <a href="blist"><button type="button">목록</button></a>
+		  <a href="fboardReply.do?bno=${bBean.bno}&page=${page}&searchTitle=${searchTitle}&searchWord=${searchWord}"><button type="button">답변달기</button></a>
+		  <button type="button" onclick="updateBtn()">수정</button>
+		  <button type="button" onclick="deleteBtn()">삭제</button>
+		</div>
+	
+	</body>
 </html>

@@ -7,11 +7,11 @@ public interface MService {
 
 	//로그인 확인
 	int login(MemberDto2 mdto2);
-	//아이디 이메일 검색
+
+	//비밀번호찾기 - 아이디,이메일 검색
 	String pwsearch(String id, String email);
-	//아이디 찾기
+
+	//아이디찾기-name,email
 	MemberDto2 idsearch(String name, String email);
-	//아이디 중복확인
-	String idcheck(String id);
 
 }
