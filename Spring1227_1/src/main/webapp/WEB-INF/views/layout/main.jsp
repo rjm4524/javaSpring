@@ -10,6 +10,9 @@
 <script type="text/javascript">
 $(document).ready(function() {
 	
+	
+	
+	
 	var mySwiper = new Swiper('#mainRoll',{
 		pagination: '#mainThum',
 		paginationClickable: true,

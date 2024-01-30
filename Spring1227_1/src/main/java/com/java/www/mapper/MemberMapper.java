@@ -19,6 +19,10 @@ public interface MemberMapper {
 
 	//아이디찾기-name,email
 	MemberDto2 idsearch(String name, String email);
+	//비밀번호 체크
+	MemberDto2 pwCheck(String oldPw);
+	//비밀번호 변경
+	void pwChange(String newPw,String oldPw);
 
 	
 }

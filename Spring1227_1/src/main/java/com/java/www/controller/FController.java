@@ -26,6 +26,11 @@ public class FController {
 	public String main() {
 		return "layout/main";
 	}
+	@GetMapping("X")
+	public String X() {
+		
+		return "X";
+	}
 	
 	@GetMapping("layout/chart")
 	public String chart() {

@@ -7,23 +7,21 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>Insert title here</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Bootstrap demo</title>
 		<link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:300,400,500,700,900&display=swap" rel="stylesheet">
 		<link rel="stylesheet" type="text/css" href="css/style_main.css">
+		
+		<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js" integrity="sha384-Rx+T1VzGupg4BHQYs2gCW9It+akI2MM/mndMCy36UVfodzcJcF0GGLxZIzObiEfa" crossorigin="anonymous"></script>
 	</head>
 	<body>
 	 	<header>
 	 		<div id="nav_up">
 	 			<ul>
-	 			<c:if test="${session_id==null}">
 	 				<li>회원가입</li>
-	 				<li><a href="/login" style="color:white">로그인</a></li>
-	 			</c:if>
-	 			<c:if test="${session_id!=null}">
-	 				<li>${session_name}님</li>
-	 				<li><a href="#" style="color:white">로그아웃</a></li>
-	 			</c:if>
-	 				<li>고객행복센터</li>
+	 				<li><a href="/login" style="color:white;">로그인</a></li>
+	 				<li><a href="bootstrap01">고객행복센터</a></li>
 	 				<li>배송정보검색</li>
 	 				<li>기프트카드 등록</li>
 	 			</ul>

@@ -81,12 +81,8 @@
 
     <ul class="login-icons">
       <li class="phone"></li>
-      <a href="https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=d4b05d938959c8fa6bfe46bd9179b8b9&redirect_uri=http://localhost:8000/kakao/oauth">
-      <li class="kakao"></li>
-      </a>
-      <a href="https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=:OnJ3PrSAlSkEIQN5ticA&redirect_uri=http://localhost:8000/callback">
+      <a href="https://kauth.kakao.com/oauth/authorize?client_id=4c44eb5eb98f256ba33a5c728ba55576&redirect_uri=http://localhost:8000/kakao/oauth&response_type=code" style="text-decoration: none;"><li class="kakao"></li></a>
       <li class="naver"></li>
-      </a>
       <li class="facebook"></li>
     </ul>
 

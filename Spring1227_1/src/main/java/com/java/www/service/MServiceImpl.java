@@ -151,6 +151,18 @@ public class MServiceImpl implements MService {
 		MemberDto2 mdto2 = memberMapper.idsearch(name,email);
 		return mdto2;
 	}
+	//비밀번호 변경
+	@Override
+	public MemberDto2 pwCheck(String oldPw) {
+		MemberDto2 mdto2 = memberMapper.pwCheck(oldPw);
+		return mdto2;
+	}
+	
+	@Override //비밀번호 변경
+	public void pwChange(String newPw,String oldPw) {
+		memberMapper.pwChange(newPw,oldPw);
+		
+	}
 	
 	
 

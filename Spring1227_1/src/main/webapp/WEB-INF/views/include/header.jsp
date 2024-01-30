@@ -40,6 +40,7 @@
 					<li><a href="/layout/chart">차트EVENT</a></li>
 					<li><a href="/customer/notice">CUSTOMER</a></li>
 					<li><a href="/layout/publicData">dataCOMMUNITY</a></li>
+					<li><a href="/X">X</a></li>
 				</ul>
 			</div>
 			<div id="snb">
@@ -50,7 +51,7 @@
 					</c:if>
 					<c:if test="${session_id != null}">
 						<li><a href="/member/logout">LOGOUT</a></li>
-						<li><a href="#">${session_name}님</a></li>
+						<li><a href="/member/mypage">${session_name}님</a></li>
 					</c:if>
 					
 					

@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.servlet.mvc.support.RedirectAttributesModelMap;
 
 import com.java.www.dto.MemberDto;
 import com.java.www.dto.MemberDto2;
@@ -31,6 +33,38 @@ public class MController {
 	public String idsearch() {
 		return "member/idsearch";
 	}
+	@GetMapping("pwupdate") //idsearch페이지 열기
+	public String pwupdate() {
+		
+		return "member/pwupdate";
+	}
+	@GetMapping("pwcheck") //idsearch페이지 열기
+	public String pwcheck() {
+		
+		return "member/pwcheck";
+	}
+	@PostMapping("pwupdate") //idsearch페이지 열기
+	public String pwup(String newPw,String oldPw,RedirectAttributes redirectAttributes) {
+		System.out.println("pwup newPw:"+newPw);
+		MemberDto2 mdto2 = mService.pwCheck(oldPw);
+		if(mdto2!=null) {
+			mService.pwChange(newPw,oldPw);
+		}
+		return "member/okmessage";
+	}
+	
+	
+	
+	@GetMapping("mypage")
+	public String mypage(MemberDto2 mdto,Model model) {
+		model.addAttribute("mdto",mdto);
+		return "member/mypage";
+	}
+	
+	
+	
+	
+	
 	
 	@PostMapping("idsearch") //ajax 아이디찾기-name,email
 	@ResponseBody

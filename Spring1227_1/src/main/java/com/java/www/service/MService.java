@@ -13,5 +13,9 @@ public interface MService {
 
 	//아이디찾기-name,email
 	MemberDto2 idsearch(String name, String email);
+	//비밀번호 확인
+	MemberDto2 pwCheck(String oldPw);
+	//비밀번호 변경
+	void pwChange(String newPw,String oldPw);
 
 }

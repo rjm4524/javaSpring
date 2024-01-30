@@ -22,7 +22,13 @@
   <select id="idsearch" resultType="com.java.www.dto.MemberDto2">
      select * from member2 where name=#{name} and email=#{email}
   </select>
-   
-   
+  
+  <select id="pwCheck" resultType="com.java.www.dto.MemberDto2">
+  		select * from member2 where pw=#{oldPw}
+  </select> 
+  
+   <update id="pwChange">
+     update member2 set pw=#{newPw} where pw=#{oldPw}
+  </update>
    
 </mapper>
